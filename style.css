@@ -8,6 +8,8 @@
   display: grid;
   grid-gap: 30px;
   padding: 0 50px;
+  max-width: 1440px;
+  margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -23,7 +25,7 @@ h1 {
 .workspace {
   display: grid;
   grid-gap: 50px;
-  grid-template-columns: repeat(2, auto );
+  grid-template-columns: 40% 60%;
 }
 
 .form {
@@ -54,4 +56,10 @@ h1 {
 .button:active {
 	position:relative;
 	top:1px;
+}
+
+textarea {
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 5px;
+  padding-left: 10px;
 }
