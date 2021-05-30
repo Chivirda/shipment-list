@@ -1,6 +1,7 @@
 function formSubmit() {
   let text = prepareText()
   printText(text)
+  addCopyButton()
 }
 
 function prepareText() {
@@ -33,4 +34,23 @@ function prepareText() {
 function printText(text) {
   let paragraph = document.querySelector('.output-text')
   paragraph.innerHTML = text
+}
+
+function addCopyButton() {
+  let copyButton = document.querySelector('.copy-button')
+  copyButton.style.display = 'inline-block'
+  copyButton.addEventListener('click', copyToClipboard, false)
+}
+
+function copyToClipboard() {
+  let el = document.createElement('textarea')
+  let paragraph = document.querySelector('.output-text')
+  el.value = paragraph.textContent
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Shipment list</title>
@@ -17,12 +18,15 @@
 
     <div class="workspace">
       <form class="form" onsubmit="formSubmit(); return false">
-        <textarea name="text" id="text" cols="60" rows="10"></textarea>
+        <textarea name="text" id="text" cols="60" rows="10" title="Вставьте сюда список нарядов"></textarea>
         <button class="button" type="submit">Submit</button>
       </form>
-      <p class="output-text">
-        Здесь появится список документов для доставки
-      </p>
+      <div class="form-text">
+        <p class="output-text">
+          Здесь появится список документов для доставки
+        </p>
+        <i class="far fa-copy copy-button" title="Копировать"></i>
+      </div>
     </div>
   </div>
 
