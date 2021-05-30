@@ -33,11 +33,13 @@ function prepareText() {
 
 function printText(text) {
   let paragraph = document.querySelector('.output-text')
+
   paragraph.innerHTML = text
 }
 
 function addCopyButton() {
   let copyButton = document.querySelector('.copy-button')
+
   copyButton.style.display = 'inline-block'
   copyButton.addEventListener('click', copyToClipboard, false)
 }
@@ -45,6 +47,7 @@ function addCopyButton() {
 function copyToClipboard() {
   let el = document.createElement('textarea')
   let paragraph = document.querySelector('.output-text')
+  
   el.value = paragraph.textContent
   el.setAttribute('readonly', '')
   el.style.position = 'absolute'
