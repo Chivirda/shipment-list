@@ -5,22 +5,11 @@ function formSubmit() {
 }
 
 function prepareText() {
-  let separator = /[\n | \s]/gm
-  let bracketedText = /\(.+\)/
+  let separator = /\(([^)]*)\)/gm
   let comma = /,/
-  let sourceText = document.querySelector('#text').value.split(separator)
-  
-  for(let i in sourceText) {
-    if(sourceText[i] === 'Наряд') {
-      sourceText.splice(i, 1)
-    }
-  }
-
-  for(let i in sourceText) {
-    if(bracketedText.test(sourceText[i])) {
-      sourceText.splice(i, 1)
-    }
-  }
+  let words = /[А-Яа-я\s]/gm
+  let sourceText = document.querySelector('#text').value
+    .replace(words, '').replace(separator, ' ').trim().split(' ')
 
   for(let i in sourceText) {
     if(comma.test(sourceText[i])) {
