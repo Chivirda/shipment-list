@@ -4,7 +4,6 @@
   "description": "Подготавливает список номеров документов для дальнейшего использования его в шаблоне доставки",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
     "serve": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "deploy": "webpack --mode production && gh-pages -d dist"
