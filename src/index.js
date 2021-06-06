@@ -1,3 +1,9 @@
+import './style.css'
+
+let submitButton = document.querySelector('.button')
+
+submitButton.addEventListener('click', formSubmit, false)
+
 function formSubmit() {
   let text = prepareText()
   printText(text)
