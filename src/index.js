@@ -1,8 +1,19 @@
+import Toast from './Toast/Toast'
+import './Toast/Toast.css'
 import './style.css'
 
 let submitButton = document.querySelector('.button')
+let copyButton = document.querySelector('.copy-button')
 
 submitButton.addEventListener('click', formSubmit, false)
+copyButton.addEventListener('click', function() {
+  Toast.add({
+    text: 'Успешно скопировано.',
+    color: '#28a745',
+    autohide: true,
+    delay: 2000
+  })
+})
 
 function formSubmit() {
   let text = prepareText()
