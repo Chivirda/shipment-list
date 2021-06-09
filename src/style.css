@@ -72,3 +72,11 @@ textarea {
   cursor: pointer;
   display: none;
 }
+
+span:hover {
+  cursor: pointer;
+}
+
+.active {
+  background-color: #0099CC;
+}

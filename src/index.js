@@ -4,21 +4,26 @@ import './style.css'
 
 let submitButton = document.querySelector('.button')
 let copyButton = document.querySelector('.copy-button')
+let toastConfig = {
+  text: 'Успешно скопировано.',
+  color: '#28a745',
+  autohide: true,
+  delay: 2000
+}
 
 submitButton.addEventListener('click', formSubmit, false)
 copyButton.addEventListener('click', function() {
-  Toast.add({
-    text: 'Успешно скопировано.',
-    color: '#28a745',
-    autohide: true,
-    delay: 2000
-  })
+  let paragraph = document.querySelector('.output-text')
+  let text = paragraph.textContent
+  copyToClipboard(text)
+  Toast.add(toastConfig)
 })
 
 function formSubmit() {
   let text = prepareText()
   printText(text)
   addCopyButton()
+  onSpanClickHandler()
 }
 
 function prepareText() {
@@ -34,27 +39,54 @@ function prepareText() {
     }
   }
 
-  return sourceText.join(', ')
+  return sourceText
 }
 
 function printText(text) {
   let paragraph = document.querySelector('.output-text')
+  
+  paragraph.innerHTML = ''
+  
+  for(let item in text) {
+    let span = document.createElement('span')
+    span.classList.add('invoice-number')
 
-  paragraph.innerHTML = text
+    span.setAttribute('data-number', text[item])
+    if(item < text.length - 1) {
+      span.innerHTML = `${text[item]}, `
+    } else span.innerHTML = `${text[item]}`
+    paragraph.appendChild(span)
+  }
+}
+
+function onSpanClickHandler() {
+  let spans = document.querySelectorAll('span')
+
+  for(let span of spans) {
+    span.onclick = function() {
+      for(let siblings of spans) {
+        siblings.classList.remove('active')
+      }
+      this.classList.toggle('active')
+      let invoiceNumber = this.dataset.number
+      copyToClipboard(invoiceNumber)
+      Toast.add(toastConfig)
+    }
+  }
+
 }
 
 function addCopyButton() {
   let copyButton = document.querySelector('.copy-button')
+  
 
   copyButton.style.display = 'inline-block'
-  copyButton.addEventListener('click', copyToClipboard, false)
 }
 
-function copyToClipboard() {
+function copyToClipboard(textToCopy) {
   let el = document.createElement('textarea')
-  let paragraph = document.querySelector('.output-text')
   
-  el.value = paragraph.textContent
+  el.value = textToCopy
   el.setAttribute('readonly', '')
   el.style.position = 'absolute'
   el.style.left = '-9999px'
