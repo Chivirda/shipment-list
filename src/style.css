@@ -82,6 +82,11 @@ span:hover {
 }
 
 @media print {
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+
   .workspace {
     display: grid;
     grid-template-columns: 1fr;
@@ -99,5 +104,9 @@ span:hover {
   td {
     border: 1px solid #000000;
     border-collapse: collapse;
+  }
+
+  td {
+    min-width: 10vw;
   }
 }
