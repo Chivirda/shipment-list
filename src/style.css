@@ -81,6 +81,12 @@ span:hover {
   background-color: #0099CC;
 }
 
+table,
+td {
+  border: 1px solid #000000;
+  border-collapse: collapse;
+}
+
 @media print {
   @page {
     size: auto;
