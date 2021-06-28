@@ -64,10 +64,6 @@ textarea {
   padding-left: 10px;
 }
 
-.output-text {
-  display: inline;
-}
-
 .copy-button {
   cursor: pointer;
   display: none;
