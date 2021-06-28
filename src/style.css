@@ -80,3 +80,24 @@ span:hover {
 .active {
   background-color: #0099CC;
 }
+
+@media print {
+  .workspace {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    display: none;
+  }
+
+  .copy-button {
+    display: none;
+  }
+
+  table,
+  td {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+  }
+}
