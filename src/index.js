@@ -27,17 +27,8 @@ function formSubmit() {
 }
 
 function prepareText() {
-  let separator = /\(([^)]*)\)/gm
-  let comma = /,/
-  let words = /[А-Яа-я\s]/gm
-  let sourceText = document.querySelector('#text').value
-    .replace(words, '').replace(separator, ' ').trim().split(' ')
-
-  for(let i in sourceText) {
-    if(comma.test(sourceText[i])) {
-      sourceText[i] = sourceText[i].replace(comma, '')
-    }
-  }
+  let number = /\d{8}\/\d{1}/gm
+  let sourceText = document.querySelector('#text').value.match(number)
 
   return sourceText
 }
