@@ -11,9 +11,13 @@ module.exports = {
     clean: true
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
-    port: 3000
+    port: 3000,
+    hot: true,
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +32,7 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.png/,
+        test: /\.png$/,
         type: 'asset/resource'
       }
     ]

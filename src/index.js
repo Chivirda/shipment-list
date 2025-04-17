@@ -27,10 +27,14 @@ function formSubmit() {
 }
 
 function prepareText() {
-  let number = /\d{8}\/\d{1}/gm
-  let sourceText = document.querySelector('#text').value.match(number)
+  let numberRegex = /\d{2}-\d{8}/gm;
+  let sourceText = document.querySelector('#text').value.match(numberRegex);
 
-  return sourceText
+  if (sourceText) {
+    sourceText = sourceText.map(item => item.replace(/^0+|-0*/g, ''));
+  }
+
+  return sourceText;
 }
 
 function printText(text) {
